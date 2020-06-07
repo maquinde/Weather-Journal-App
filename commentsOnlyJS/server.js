@@ -1,7 +1,7 @@
 // Setup empty JS object to act as endpoint for all routes
 // Express to run server and routes
 
-const endpoint = {};
+const projectData = {};
 const express = require('express');
 
 // Start up an instance of app
