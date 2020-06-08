@@ -1,3 +1,9 @@
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config();
+}
+
+const WEATHERMAP_API_KEY = process.env.WEATHERMAP_API_KEY;
+
 // Setup empty JS object to act as endpoint for all routes
 // Express to run server and routes
 
@@ -31,7 +37,7 @@ app.use(express.static('website'));
 
 const port = 8080;
 
-app.listen(port, ()=>{
+const server = app.listen(port, ()=>{
     console.log(`listening on port: ${port}`);
 });
 
