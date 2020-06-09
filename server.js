@@ -30,9 +30,7 @@ const server = app.listen(port, ()=>{
 // Initialize all route with a callback function
 
 
-
 // Callback function to complete GET '/all'
-
 
 
 // Post Route
