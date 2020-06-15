@@ -9,18 +9,57 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 
 
+
+
+const getJson = async (url = '') => {
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
+/* Function to POST data */
+const postWeather = async (url = '', data = {}) => {
+    const response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify(data)
+        });
+};
+
+
+/* Function to GET Project Data */
+const updateWeather = async () => {
+    const projectData = await getJson('/all');
+    document.getElementById('date').innerHTML = `DATE: ${projectData.date}`;
+    document.getElementById('temp').innerHTML = `TEMP: ${projectData.temp}`;
+    document.getElementById('content').innerHTML = `FEELING: ${projectData.feeling}`;
+};
+
+
 /* Function called by event listener */
-const getData = async () => {
+/* Function to GET Web API Data*/
+const getWeather = async () => {
     const zip = document.querySelector('#zip').value;
     const feeling = document.querySelector('#feelings').value;
-    const weatherData = await fetch(`${url}${zip}${apiKey}`);
+    const res = await fetch(`${url}${zip}${apiKey}`);
 
     try {
-        const weatherData_json = await weatherData.json();
-        weatherData_json.feeling = feeling;
-        weatherData_json.date = newDate;
+        const weatherData = await res.json();
+        weatherData.feeling = feeling;
+        weatherData.date = newDate;
 
-
+        await postWeather('/', weatherData);
+        updateWeather();
 
     } catch(error){
         console.log('error', error);
@@ -28,23 +67,5 @@ const getData = async () => {
 }
 
 
-
-
-
-
-
-
-
-
-
 // Event listener to add function to existing HTML DOM element
-document.querySelector('#generate').addEventListener('click', getData);
-
-
-//========================COMMENT ONLY====================
-
-/* Function to GET Web API Data*/
-
-/* Function to POST data */
-
-/* Function to GET Project Data */
+document.querySelector('#generate').addEventListener('click', getWeather);
