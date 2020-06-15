@@ -3,14 +3,13 @@
 const url = 'http://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = '&appid=edf4166a8c76354d02d7cebedd3be30d';
 
+
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 
-
-
-
+/* Function to GET Project Data */
 const getJson = async (url = '') => {
     try {
         const res = await fetch(url);
@@ -37,7 +36,7 @@ const postWeather = async (url = '', data = {}) => {
 };
 
 
-/* Function to GET Project Data */
+/* Function to update the data in HTML */
 const updateWeather = async () => {
     const projectData = await getJson('/all');
     document.getElementById('date').innerHTML = `DATE: ${projectData.date}`;

@@ -4,20 +4,19 @@ body{
 }
 
 #app{
-    display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    grid-gap: 1em;
+    width: 600px;
+    min-height:100vh;
+    margin: 0 auto;
+    color: #000;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
 }
 
 .holder{
-
+    /* width: 100%; */
 }
 
 .entry{
@@ -41,7 +40,8 @@ body{
 }
 
 .headline {
-
+    text-align: center;
+    margin-bottom: 20px;
 }
 .title{
 
@@ -56,33 +56,38 @@ label{
 input{
     display:block;
     height: 60px;
-    width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
+    width: 100%;
+    background:#fffff8;
+    color: #000;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
-    border: none;
+    border: 2px solid black;
+    margin-bottom: 20px;
 }
 
 button{
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
-    color: #f0d43a;
+    padding: 40px;
+    width: 100%;
+    background: rgba(59, 74, 107, .4);
+    color: #000;
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
-    border: none;
+    border: 3px solid #000;
     box-shadow: 2px 4px 5px #444;
+    margin-bottom: 20px;
 }
 h1{
     font-size: 36px;
 }
 
 textarea{
-    background:#22b2da;
-    color: #f0d43a;
+    width: 100%;
+    background:#fff;
+    color: #000;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+    border: 2px solid #000;
+    margin-bottom: 20px;
 }
 /* Reset style for HTML element on active to have no border*/
 input:focus,
